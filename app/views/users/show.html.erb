@@ -1,0 +1,12 @@
+<h1>User Info</h1>
+<% if flash[:message] %>
+    <p><%= flash[:message] %></p>
+<% end %>
+
+Name: <%= @user.name %>
+Height: <%= @user.height %>
+<%= @user.destinations.notes.each do | note | %>
+    <%= note.content %>
+<% end%>
+<br>
+<%= link_to "See attractions", attractions_path %>
