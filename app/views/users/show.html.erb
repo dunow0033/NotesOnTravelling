@@ -5,9 +5,9 @@
 
 <h1>Welcome to the Travel Note Taking App!!</h1>
 
-
+<%= if @user.destinations.notes %>
 Name: <%= @user.name %>
-<%= @user.destinations.each do | note | %>
+<%= @user.destinations.notes.each do | note | %>
     <%= note.content %>
 <% end%>
 <br>
