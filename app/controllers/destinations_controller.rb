@@ -14,18 +14,18 @@ class DestinationsController < ApplicationController
 
     def show
         @destination = Destination.find_by(id: params[:id])
-        @ride = @attraction.rides.build(user_id: current_user.id)
+        @note = @destination.notes.build(user_id: current_user.id)
     end
 
     def edit
-        @attraction = Attraction.find_by(id: params[:id])
-        @ride = @attraction.rides.build(user_id: current_user.id)
+        @destination = Destination.find_by(id: params[:id])
+        @note = @destination.notes.build(user_id: current_user.id)
     end
 
     def update
-        @attraction = Attraction.find_by(id: params[:id])
-        @attraction.update(attraction_params)
-        redirect_to attraction_path(@attraction)
+        @destination = Destination.find_by(id: params[:id])
+        @destination.update(destination_params)
+        redirect_to destination_path(@destination)
     end
 
     private 

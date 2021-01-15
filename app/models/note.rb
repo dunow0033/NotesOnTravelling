@@ -1,4 +1,4 @@
 class Note < ApplicationRecord
-    has_many :users
-    has_many :destinations, through: :users
+    belongs_to :users
+    belongs_to :destinations
 end

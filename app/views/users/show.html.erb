@@ -5,11 +5,10 @@
 
 <h1>Welcome to the Travel Note Taking App!!</h1>
 
-<%= if @user.destinations.notes %>
 Name: <%= @user.name %>
-<%= @user.destinations.notes.each do | note | %>
+<!--<%= @user.notes.destinations.each do | note | %>
     <%= note.content %>
-<% end%>
+<% end%>-->
 <br>
 <%= link_to "See all destinations", destinations_path %>
 <br>

@@ -1,4 +1,4 @@
 class Destination < ApplicationRecord
-    belongs_to :users
-    belongs_to :notes
+    has_many :users
+    has_many :notes, through: :users
 end
