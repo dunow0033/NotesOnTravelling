@@ -1,4 +1,4 @@
 class Destination < ApplicationRecord
-    has_many :users
-    has_many :notes, through: :users
+    has_many :notes
+    has_many :users, through: :notes
 end
