@@ -1,0 +1,13 @@
+<h1>Edit a Note</h1>
+<%= form_for @note do |f| %>
+    <%= f.label :new_destination_name, "Destination Name" %>
+    <%= f.text_field :new_destination_name %>
+
+    <%= f.label :destination_name %>
+    <%= f.select(:destination_name, Destination.all.map {|d| [d.name]}.uniq!, :prompt => "Select a Destination") %><br />
+
+    <%= f.label :content %>
+    <%= f.text_area_field :content %><br>
+
+    <%= f.submit "Submit Changes" %>
+<% end %>

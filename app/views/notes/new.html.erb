@@ -7,7 +7,7 @@
     <%= f.select(:destination_name, Destination.all.map {|d| [d.name]}.uniq!, :prompt => "Select a Destination") %><br />
 
     <%= f.label :content %>
-    <%= f.password_field :content %><br>
+    <%= f.text_area_field :content %><br>
 
     <%= f.submit "Create Note" %>
 <% end %>

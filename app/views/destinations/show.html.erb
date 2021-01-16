@@ -4,6 +4,6 @@
 
 <h1>List of Notes: </h1>
 
-<%= notes.each do | note | %>
+<%= @notes.each do | note | %>
     <%= note.user.name %><%= note.content %><%= link_to "Edit Note", edit_note_path(note) %>
 <% end %>

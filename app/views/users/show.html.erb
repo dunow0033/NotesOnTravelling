@@ -1,11 +1,8 @@
 <h1>User Info</h1>
-<!--<% if flash[:message] %>
-    <p><%= flash[:message] %></p>
-<% end %>-->
 
 <h1>Welcome to the Travel Note Taking App, <%= @user.name %>!!</h1>
 
-<% if @user.destination.count > 0 %>
+<% if @user.destinations.count > 0 %>
     <h3>Here are the destinations that you have commented on:</h3>
     <%= @user.destinations.each do | destination | %>
         <%= destination.name %>
