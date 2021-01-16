@@ -3,12 +3,11 @@
     <p><%= flash[:message] %></p>
 <% end %>-->
 
-<h1>Welcome to the Travel Note Taking App!!</h1>
+<h1>Welcome to the Travel Note Taking App, <%= @user.name %>!!</h1>
 
-Name: <%= @user.name %>
-
-<% if @user.notes.destination.count > 0 %>
-    <%= @user.notes.destinations.each do | destination | %>
+<% if @user.destination.count > 0 %>
+    <h3>Here are the destinations that you have commented on:</h3>
+    <%= @user.destinations.each do | destination | %>
         <%= destination.name %>
     <% end %>
 <% else %>
@@ -16,7 +15,5 @@ Name: <%= @user.name %>
 <% end %>
 <br>
 <%= link_to "See all destinations", destinations_path %>
-<br>
-<%= link_to "Make New Destination", new_destination_path %>
 <br>
 <%= link_to "Make New Note", new_note_path %>
