@@ -7,6 +7,15 @@
     
   </head>
 
+  <% if !@current_user %>
+        <%= link_to "Log In", login_path %>
+        <%= link_to 'Sign Up', signup_path %>
+      <% else %>
+        <%= link_to "All Notes", notes_path %>
+        <%= link_to "Add a New Note and Destination", new_note_path %>
+        <%= link_to 'Log Out', '/sessions/', method: "delete" %>
+      <% end %>
+
   <body>
     <%= yield %>
   </body>

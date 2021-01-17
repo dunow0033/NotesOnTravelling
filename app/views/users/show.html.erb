@@ -2,14 +2,6 @@
 
 <h1>Welcome to the Travel Note Taking App, <%= @user.name %>!!</h1>
 
-<% if @user.destinations.count > 0 %>
-    <h3>Here are the destinations that you have commented on:</h3>
-    <%= @user.destinations.each do | destination | %>
-        <%= destination.name %>
-    <% end %>
-<% else %>
-    <h1>No destinations commented on yet!!</h1>
-<% end %>
 <br>
 <%= link_to "See all destinations", destinations_path %>
 <br>

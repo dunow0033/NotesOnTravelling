@@ -1,9 +1,5 @@
 <h1>All Destinations created so far: </h1>
 
-<%= @destinations.each do | destination | %>
-    <%= destination.name %><%= link_to "Show with notes", destination_path(destination) %>
+<%= @destination.each do | destination | %>
+    <%= destination.name %><!--<%= link_to "Show with notes", destination_path(destination) %>-->
 <% end %>
-
-<%= link_to "See Your Destinations", user_path(user) %>
-<br>
-<%= link_to "Make New Note", new_note_path %>
