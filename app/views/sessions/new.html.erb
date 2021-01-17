@@ -1,7 +1,7 @@
 <h1>Sign In</h1>
 
 <%= form_for(@user, url: '/signin') do |f| %>
-Name: <%= f.text_field :name %><br><br>
-Password: <%= f.password_field :password %><br><br>
-<%= f.submit "Sign In" %><br><br>
+    <%= f.text_field :name, placeholder: "Name" %><br><br>
+    <%= f.password_field :password, placeholder: "Password" %><br><br>
+    <%= f.submit "Sign In" %>
 <% end %>

@@ -1,10 +1,10 @@
 <h1>Sign Up</h1>
 <%= form_for @user do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
-
-    <%= f.label :password %>
-    <%= f.password_field :password %><br>
+    <%= f.text_field :name, placeholder: "Name" %>
+    <br><br>
+    <%= f.password_field :password, placeholder: "Password" %>
+    <br><br>
+    <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %><br><br>
 
     <%= f.submit "Create User" %>
 <% end %>
