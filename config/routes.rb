@@ -2,10 +2,11 @@ Rails.application.routes.draw do
 
   root 'application#home'
     
+  get '/signup' => 'users#new', as: 'signup'
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
 
-  delete '/sessions', to: 'sessions#destroy'
+  get '/sessions', to: 'sessions#destroy'
 
   resources :users
   resources :notes

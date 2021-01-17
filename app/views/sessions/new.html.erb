@@ -1,8 +1,7 @@
 <h1>Sign In</h1>
-<%= form_tag("/signin") do %>
-  <%= label_tag :name %>
-  <%= text_field_tag :name %><br />
-  <%= label_tag :password %>
-   <%= password_field_tag :password %></p>
-  <%= submit_tag "Sign In" %>
+
+<%= form_for(@user, url: '/signin') do |f| %>
+Name: <%= f.text_field :name %><br><br>
+Password: <%= f.password_field :password %><br><br>
+<%= f.submit "Sign In" %><br><br>
 <% end %>
