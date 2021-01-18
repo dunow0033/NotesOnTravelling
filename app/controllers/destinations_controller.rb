@@ -1,8 +1,9 @@
 class DestinationsController < ApplicationController
     def index
-        @destinations = Destination.all
+        @user = current_user
+        @destinations = @user.destinations
     end
-
+    
     def new
         @destination = Destination.new
     end
@@ -14,5 +15,11 @@ class DestinationsController < ApplicationController
         else
             render :new
         end
+    end
+
+    private
+
+    def destination_params
+        params.require(:destination).permit(:name)
     end
 end

@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         @user = User.find_by(name: params[:user][:name])
         if @user && @user.authenticate(params[:user][:password])
           session[:user_id] = @user.id
-          redirect_to destinations_path
+          redirect_to user_path(@user)
         else
           @error = "Invalid login credentials. Please try again."
           render :new

@@ -7,12 +7,12 @@
     
   </head>
 
-      <% if !current_user %>
+      <% if !@current_user %>
         <%= link_to "Sign In", signin_path %>
         <%= link_to 'Sign Up', signup_path %>
       <% else %>
-        <%= link_to "All Destinations and Notes", destinations_path %>
-        <%= link_to "Add a New Destination and Note", new_destination_path %>
+        <%= link_to "All Destinations", destinations_path %>
+        <%= link_to "Add a New Destination", new_destination_path %>
         <%= link_to 'Log Out', '/sessions/', method: "delete" %>
       <% end %>
 
