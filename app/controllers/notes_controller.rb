@@ -5,15 +5,14 @@ class NotesController < ApplicationController
     
     def create
         @note = Note.create(note_params)
-        redirect_to note_path(@note)
+        redirect_to notes_path
     end
     
-    def show
-        @note = Note.find_by(id: params[:id])
+    def index
+        @notes = Note.all
     end
     
     def edit
-        @note = @destination.notes.build(user_id: current_user.id)
     end
     
     def update

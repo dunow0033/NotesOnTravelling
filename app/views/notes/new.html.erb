@@ -4,7 +4,7 @@
     <%= f.text_field :new_destination_name %>
 
     <%= f.label :destination_name %>
-    <%= f.select(:destination_name, Destination.all.map {|d| [d.name]}.uniq!, :prompt => "Select a Destination") %><br />
+    <!-- figure out how to bring in the destination name from the show destinations html page -->
 
     <%= f.label :content %>
     <%= f.text_area_field :content %><br>

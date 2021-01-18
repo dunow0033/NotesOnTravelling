@@ -1,0 +1,6 @@
+<h1>All Destination Notes:</h1>
+
+<% @notes.each do |note| %>
+    <fieldset>
+        <strong><%= note.user.name %></strong> made a comment on <%= note.destination.name %>:
+<% end %>
