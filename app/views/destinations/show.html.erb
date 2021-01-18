@@ -1,9 +1,6 @@
-<h1><%= @destination.name %></h1>
+<h1>New Destination</h1>
+<h2><%= @destination.name %></h2>
 
 <!-- maybe destination.picture -->
 
-<h1>List of Notes: </h1>
-
-<%= @notes.each do | note | %>
-    <%= note.user.name %><%= note.content %><%= link_to "Edit Note", edit_note_path(note) %>
-<% end %>
+<%= link_to "Make a New Note", new_destinations_note_path %>

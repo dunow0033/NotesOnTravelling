@@ -1,7 +1,8 @@
 class DestinationsController < ApplicationController
     def index
-        @user = current_user
-        @destinations = @user.destinations
+        @destinations = Destination.all
+        # this is what this should be, but it's not working!!!
+        #@destinations = current_user.destinations
     end
     
     def new
@@ -11,7 +12,7 @@ class DestinationsController < ApplicationController
     def create
         @destination = Destination.new(destination_params)
         if @destination.save
-            redirect_to destinations_path
+            redirect_to destination_path(@destination)
         else
             render :new
         end
