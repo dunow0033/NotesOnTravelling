@@ -2,7 +2,6 @@
 
 <%= @destinations.each do | destination | %>
     <li>
-    <!--<li><%= link_to destination.name, destinations_note_path %></li>-->
-        <%= destination.name %>
+        <%= link_to destination.name, destination_notes_path(destination) %>
     </li>
 <% end %>
