@@ -1,5 +1,7 @@
 <h1>All Destinations created so far: </h1>
 
 <%= @destinations.each do | destination | %>
-    <li><%= link_to destination.name, destination_notes_path(destination) %></li>
+    <li>
+        <%= link_to destination.name, destination_notes_path(destination) %>
+    </li>
 <% end %>

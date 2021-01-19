@@ -18,6 +18,10 @@ class DestinationsController < ApplicationController
         end
     end
 
+    def show
+        @destination = Destination.find_by_id(params[:id])
+    end
+
     private
 
     def destination_params
