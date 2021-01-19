@@ -10,5 +10,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :notes
-  resources :destinations
+  resources :destinations do
+    resources :notes
+  end
 end

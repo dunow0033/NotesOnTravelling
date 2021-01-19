@@ -1,6 +1,9 @@
-<h1>New Destination</h1>
+<h1>New Destination:</h1>
 <h2><%= @destination.name %></h2>
 
 <!-- maybe destination.picture -->
 
-<%= link_to "Make a Note for this Destination", new_destinations_note_path %>
+<%= link_to "Make a Note for this Destination", new_destination_note_path(@destination) %>
+<br>
+<br>
+<%= link_to "All Destinations", destinations_path %>

@@ -7,7 +7,7 @@
     
   </head>
 
-      <% if !@current_user %>
+      <% if !current_user %>
         <%= link_to "Sign In", signin_path %>
         <%= link_to 'Sign Up', signup_path %>
       <% else %>

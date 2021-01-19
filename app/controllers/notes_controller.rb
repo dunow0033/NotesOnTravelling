@@ -20,6 +20,10 @@ class NotesController < ApplicationController
         @note.update(note_params)
         redirect_to notes_path
     end
+
+    def show
+        @destination = Destination.find_by_id(params[:id])
+    end
     
     private 
     

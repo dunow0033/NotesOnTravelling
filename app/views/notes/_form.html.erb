@@ -1,10 +1,9 @@
 <%= form_for @note do |f| %>
-    <%= f.label :new_destination_name, "Destination Name" %>
-    <%= f.text_field :new_destination_name %>
+    <h3>Destination Name: </h3>
+    <%= @destination.name %>
+    <br>
 
-    <%= f.label :destination_name %>
-    <!-- figure out how to bring in the destination name from the show destinations html page -->
-
+    <h3>Make a New Note:</h3>
     <%= f.label :content %>
     <%= f.text_area_field :content %><br>
 
