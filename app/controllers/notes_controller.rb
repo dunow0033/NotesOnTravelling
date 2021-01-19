@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
     def new
         @note = Note.new
+        @destination = @note.destination
     end
     
     def create
@@ -9,7 +10,7 @@ class NotesController < ApplicationController
     end
     
     def index
-        @notes = Note.all
+        @notes = current_user.notes
     end
     
     def edit
@@ -23,11 +24,12 @@ class NotesController < ApplicationController
 
     def show
         @destination = Destination.find_by_id(params[:id])
+        @notes = @destination.notes.build
     end
     
     private 
     
-    def attraction_params 
+    def note_params 
         params.require(:note).permit(:content, :destination_id, :user_id)
     end 
 end

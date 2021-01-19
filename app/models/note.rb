@@ -1,6 +1,6 @@
 class Note < ApplicationRecord
-    belongs_to :users
-    belongs_to :destinations
+    belongs_to :user
+    belongs_to :destination
 
     validates :content, presence: true
 end

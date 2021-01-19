@@ -1,11 +1,7 @@
-<%= form_for @note do |f| %>
-    <h3>Destination Name: </h3>
-    <%= @destination.name %>
-    <br>
-
+<%= form_for(@note) do |f| %>
     <h3>Make a New Note:</h3>
     <%= f.label :content %>
-    <%= f.text_area_field :content %><br>
+    <%= f.text_area :content %><br>
 
     <%= f.submit "Create Note" %>
 <% end %>
