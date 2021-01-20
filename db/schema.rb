@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_01_15_214433) do
   end
 
   create_table "notes", force: :cascade do |t|
-    t.string "content"
+    t.text "content", default: " "
     t.integer "user_id"
     t.integer "destination_id"
     t.datetime "created_at", precision: 6, null: false
