@@ -2,5 +2,5 @@ class Note < ApplicationRecord
     belongs_to :user
     belongs_to :destination
 
-    validates :content, presence: true
+    validates :content, presence: true, default: "no content"
 end
