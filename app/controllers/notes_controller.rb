@@ -1,12 +1,19 @@
 class NotesController < ApplicationController
     def new
-        @note = Note.new
+        @note = Note.new(user_id: session[:user_id], destination_id: params[:destination_id])
         @destination = @note.destination
     end
     
     def create
-        @note = Note.create(note_params)
-        redirect_to notes_path
+        @note = Note.new(note_params)
+        current_user.notes.build(note_params)
+        current_user.save
+        
+        if @note.save
+            redirect_to destinations_path
+        else
+            redirect_to new_destination_note_path(@destination_id)
+        end
     end
     
     def index
@@ -34,6 +41,12 @@ class NotesController < ApplicationController
     def show
         @destination = Destination.find_by_id(params[:id])
         @notes = @destination.notes.build
+    end
+
+    def destroy
+        Note.find(params[:id]).destroy
+        flash[:notice] = "Note was successfully deleted!!"
+        redirect_to destinations_path
     end
     
     private 

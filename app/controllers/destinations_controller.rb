@@ -8,19 +8,24 @@ class DestinationsController < ApplicationController
     end
 
     def create
-        @destination = Destination.new(destination_params)
-        current_user.destinations.build(destination_params)
-        current_user.save
+        @destination = Destination.find_by_id(params[:destination][:id])
+        if @destination.nil?
+            @destination = Destination.new(destination_params)
+            current_user.destinations.build(destination_params)
+            current_user.save
 
-        if @destination.save
-            redirect_to destinations_path
-        else
-            render :new
+            if @destination.save
+                redirect_to @destination
+            else
+                render :new
+            end
+        else      
+            redirect_to @destination
         end
     end
 
     def show
-        @destination = Destination.find_by_id(params[:id])
+        @destination = Destination.find_by(id: params[:id])
     end
 
     private

@@ -1,8 +1,12 @@
-<h1>Make a New Destination</h1>
+<h1>Make a New Destination Or Note for Existing Destination</h1>
 
 <%= form_for @destination do |f| %>
-    <%= f.text_field :name, placeholder: "Destination Name" %>
+    <h3>Choose from an existing destination: </h3>
+    <%= f.collection_select :id, Destination.all, :id, :name, :include_blank => true %>
     <br>
-    <br>
-    <%= f.submit %>
+        <h4>Or create a new destination: </h4>
+        <%= f.text_field :name, placeholder: "Destination Name" %>
+        <br>
+        <br>
+    <%= f.submit "Create Note/Destination" %>
 <% end %>
