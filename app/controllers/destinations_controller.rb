@@ -1,5 +1,6 @@
 class DestinationsController < ApplicationController
     def index
+        #binding.pry
         @destinations = current_user.destinations
     end
     
@@ -10,16 +11,17 @@ class DestinationsController < ApplicationController
     def create
         @destination = Destination.find_by_id(params[:destination][:id])
         if @destination.nil?
-            @destination = Destination.new(destination_params)
-            current_user.destinations.build(destination_params)
-            current_user.save
+            @destination = Destination.create(destination_params)
+            @destination.user_id = current_user.id
+            #binding.pry
 
             if @destination.save
+                #binding.pry
                 redirect_to @destination
             else
                 render :new
             end
-        else      
+        else  
             redirect_to @destination
         end
     end

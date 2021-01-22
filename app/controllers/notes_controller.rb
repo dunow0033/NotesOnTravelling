@@ -5,9 +5,7 @@ class NotesController < ApplicationController
     end
     
     def create
-        @note = Note.new(note_params)
-        current_user.notes.build(note_params)
-        current_user.save
+        @note = Note.create(note_params)
         
         if @note.save
             redirect_to destinations_path
