@@ -21,6 +21,7 @@ class NotesController < ApplicationController
                 redirect_to destinations_path, alert: "Destination Not Found!!"
             else
                 @notes = destination.notes
+                #binding.pry
             end
         else
             @notes = current_user.notes
@@ -28,6 +29,7 @@ class NotesController < ApplicationController
     end
     
     def edit
+        @note = Note.find_by(id: params[:id])
     end
     
     def update

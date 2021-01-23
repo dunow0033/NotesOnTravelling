@@ -1,6 +1,5 @@
 class DestinationsController < ApplicationController
     def index
-        #binding.pry
         @destinations = current_user.destinations
     end
     
@@ -16,7 +15,6 @@ class DestinationsController < ApplicationController
             #binding.pry
 
             if @destination.save
-                #binding.pry
                 redirect_to @destination
             else
                 render :new
