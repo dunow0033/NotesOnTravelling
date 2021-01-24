@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
 
-  get '/sessions', to: 'sessions#destroy'
+  get '/logout' => 'sessions#destroy'
+  get '/auth/github/callback' => 'sessions#create'
 
   resources :users
   resources :notes

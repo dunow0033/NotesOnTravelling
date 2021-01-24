@@ -13,7 +13,6 @@ class DestinationsController < ApplicationController
         if @destination.nil?
             @destination = Destination.create(destination_params)
             @destination.user_id = current_user.id
-            #binding.pry
 
             if @destination.save
                 redirect_to @destination
