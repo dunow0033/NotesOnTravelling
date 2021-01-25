@@ -16,15 +16,19 @@ class NotesController < ApplicationController
     
     def index
         if params[:destination_id]
-            destination = Destination.find_by(id: params[:destination_id])
-            if destination.nil?
+            @destination = Destination.find_by(id: params[:destination_id])
+            if @destination.nil?
                 redirect_to destinations_path, alert: "Destination Not Found!!"
             else
-                @notes = destination.notes
-                #binding.pry
+                @notes = @destination.notes
+                if @notes.empty?
+                    @notes = "none"
+                end
             end
         else
+            @destination = Destination.find_by(id: params[:id])
             @notes = current_user.notes
+            #binding.pry
         end
     end
     

@@ -1,16 +1,38 @@
-<h1>Destination Notes:</h1>
+<% if @destination.nil? %>
+        <h1>Destination Notes:</h1>
 
-<% @notes.each do |note| %>
-        <strong><%= note.user.name %></strong> made a comment on <%= note.destination.name %>:
-        <br>
-        <br>
-        <%= note.content %>
-        <br>
-        <br>
-        <%= link_to "Edit Comment", edit_note_path(note)  if note.user == current_user %>
-        <%= form_tag note_path(note.id), method: "delete" do %>
-                <%= submit_tag "Delete" %>
+        <% @notes.each do |note| %>
+                <strong><%= note.user.name %></strong> made a comment on <%= note.destination.name %>:
+                <br>
+                <br>
+                <%= note.content %>
+                <br>
+                <br>
+                <%= link_to "Edit Comment", edit_note_path(note)  if note.user == current_user %>
+                <%= form_tag note_path(note.id), method: "delete" do %>
+                        <%= submit_tag "Delete" %>
+                <% end %>
+                <br>
+                <br>
         <% end %>
-        <br>
-        <br>
+<% else %>
+        <% if @notes == "none" %>
+                <h1>No notes for <%= @destination.name %> yet!!</h1>
+        <% else %>
+                <h1>Notes for <%= @destination.name %>:</h1>   
+                <% @notes.each do |note| %>            
+                        <strong><%= note.user.name %></strong> made a comment on <%= note.destination.name %>:
+                        <br>
+                        <br>
+                        <%= note.content %>
+                        <br>
+                        <br>
+                        <%= link_to "Edit Comment", edit_note_path(note)  if note.user == current_user %>
+                        <%= form_tag note_path(note.id), method: "delete" do %>
+                                <%= submit_tag "Delete" %>
+                        <% end %>
+                        <br>
+                        <br>
+                <% end %>
+        <% end %>
 <% end %>
