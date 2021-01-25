@@ -28,7 +28,6 @@ class NotesController < ApplicationController
         else
             @destination = Destination.find_by(id: params[:id])
             @notes = current_user.notes
-            #binding.pry
         end
     end
     
