@@ -1,10 +1,11 @@
 class DestinationsController < ApplicationController
     def index
-        @most_commented = Destination.most_notes.first
+        @most_commented = current_user.destinations.most_notes.first
         @destinations = current_user.destinations
     end
     
     def new
+        @destinations = current_user.destinations
         @destination = Destination.new
     end
 
