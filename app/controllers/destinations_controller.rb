@@ -10,18 +10,30 @@ class DestinationsController < ApplicationController
     end
 
     def create
-        @destination = Destination.find_by_id(params[:destination][:id])
-        if @destination.nil?
-            @destination = Destination.create(destination_params)
-            @destination.user_id = current_user.id
+        if params[:destination][:id].blank? && params[:destination][:name].blank?
+            @destinations = current_user.destinations
+            @destination = Destination.new
+            @errors = "blank"
+            render :new
+        elsif !params[:destination][:id].blank? && !params[:destination][:name].blank?
+            @destinations = current_user.destinations
+            @destination = Destination.new
+            @errors = "both"
+            render :new
+        else
+            @destination = Destination.find_by_id(params[:destination][:id])
+            if @destination.nil?
+                @destination = Destination.create(destination_params)
+                @destination.user_id = current_user.id
 
-            if @destination.save
+                if @destination.save
+                    redirect_to @destination
+                else
+                    render :new
+                end
+            else  
                 redirect_to @destination
-            else
-                render :new
             end
-        else  
-            redirect_to @destination
         end
     end
 

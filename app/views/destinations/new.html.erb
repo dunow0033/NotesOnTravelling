@@ -1,3 +1,9 @@
+<% if @errors == "blank" %>
+    <h2>Destination Can't Be Blank!!  Please try again!!</h2>
+<% elsif @errors == "both" %>
+    <h2>Please choose menu option or new destination option, not both!!</h2>
+<% end %>
+
 <h1>Make a New Destination Or Note for Existing Destination</h1>
 
 <%= form_for @destination do |f| %>
