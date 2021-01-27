@@ -13,12 +13,12 @@ class DestinationsController < ApplicationController
         if params[:destination][:id].blank? && params[:destination][:name].blank?
             @destinations = current_user.destinations
             @destination = Destination.new
-            @errors = "blank"
+            flash[:alert] = "Destination Can't Be Blank!!  Please try again!!"
             render :new
-        elsif !params[:destination][:id].blank? && !params[:destination][:name].blank?
+        elsif params[:destination][:id].present? && params[:destination][:name].present?
             @destinations = current_user.destinations
             @destination = Destination.new
-            @errors = "both"
+            flash[:alert] = "Please choose menu option OR new destination option, NOT BOTH!!"
             render :new
         else
             @destination = Destination.find_by_id(params[:destination][:id])
