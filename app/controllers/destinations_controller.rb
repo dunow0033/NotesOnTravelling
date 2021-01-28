@@ -13,7 +13,7 @@ class DestinationsController < ApplicationController
         if params[:destination][:id].blank? && params[:destination][:name].blank?
             @destinations = current_user.destinations
             @destination = Destination.new
-            flash[:alert] = "Destination Can't Be Blank!!  Please try again!!"
+            flash[:alert] = "Destination CANNOT be blank!!  Please try again!!"
             render :new
         elsif params[:destination][:id].present? && params[:destination][:name].present?
             @destinations = current_user.destinations
@@ -29,6 +29,7 @@ class DestinationsController < ApplicationController
                 if @destination.save
                     redirect_to @destination
                 else
+                    flash[:alert] = "Destination not saved correctly, please try again!!"
                     render :new
                 end
             else  
