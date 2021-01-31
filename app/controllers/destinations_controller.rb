@@ -30,9 +30,6 @@ class DestinationsController < ApplicationController
                 flash[:alert] = "That destination already exists!!  Please try again!!"
                 render :new
             else
-            # @destination = Destination.find_by_id(params[:destination][:id])
-            
-            # if @destination.nil?
                 @destination = Destination.create(destination_params)
                 @destination.user_id = current_user.id
 
@@ -45,8 +42,9 @@ class DestinationsController < ApplicationController
                     render :new
                 end
             end
-        else  
-            redirect_to destination_path(@destination)
+        else
+            @destination = Destination.find_by_id(params[:destination][:id])
+            redirect_to @destination
         end
     end
 
