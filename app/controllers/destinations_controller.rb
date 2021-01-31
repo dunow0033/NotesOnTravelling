@@ -20,21 +20,19 @@ class DestinationsController < ApplicationController
             @destination = Destination.new
             flash[:alert] = "Please choose menu option OR new destination option, NOT BOTH!!"
             render :new
-        # elsif params[:destination][:name].present?
-        #     @tryDestination = params[:destination][:name]
-        #     @tryDatabase = Destination.find_by_id(params[:destination][:id])
+        elsif params[:destination][:name].present?
+            @tryDestination = params[:destination][:name]
+            @tryDatabase = Destination.find_by(name: params[:destination][:name])
 
-        #     binding.pry
-        #     if @tryDestination == @tryDatabase
-        #         @destinations = current_user.destinations
-        #         @destination = Destination.new
-        #         flash[:alert] = "That destination already exists!!  Please try again!!"
-        #         render :new
-        #     end
-        else
-            @destination = Destination.find_by_id(params[:destination][:id])
+            if !@tryDatabase.nil? && @tryDestination == @tryDatabase.name
+                @destinations = current_user.destinations
+                @destination = Destination.new
+                flash[:alert] = "That destination already exists!!  Please try again!!"
+                render :new
+            else
+            # @destination = Destination.find_by_id(params[:destination][:id])
             
-            if @destination.nil?
+            # if @destination.nil?
                 @destination = Destination.create(destination_params)
                 @destination.user_id = current_user.id
 
@@ -46,9 +44,9 @@ class DestinationsController < ApplicationController
                     flash[:alert] = "Destination not properly saved!!  Please try again!!"
                     render :new
                 end
-            else  
-                redirect_to @destination
             end
+        else  
+            redirect_to destination_path(@destination)
         end
     end
 
