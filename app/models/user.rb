@@ -4,5 +4,5 @@ class User < ApplicationRecord
     has_many :destinations
     has_many :notes, through: :destinations
 
-    validates :name, presence: true
+    validates :name, presence: true, uniqueness: true
 end
