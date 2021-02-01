@@ -8,7 +8,7 @@
 
 <%= form_for @destination do |f| %>
     <h3>Choose from an existing destination: </h3>
-    <%= f.collection_select :id, @destinations, :id, :name, :include_blank => true %>
+    <%= f.collection_select :id, @destinations.order(:name), :id, :name, :include_blank => true %>
     <br>
         <h4>Or create a new destination: </h4>
         <%= f.text_field :name, placeholder: "Destination Name" %>
