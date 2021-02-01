@@ -10,7 +10,8 @@ class NotesController < ApplicationController
         if @note.save
             redirect_to destinations_path
         else
-            redirect_to new_destination_note_path(@destination_id)
+            @destination_id = params[:note][:destination_id]
+            render :new
         end
     end
     

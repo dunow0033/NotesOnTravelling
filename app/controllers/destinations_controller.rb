@@ -20,21 +20,31 @@ class DestinationsController < ApplicationController
             @destination = Destination.new
             flash[:alert] = "Please choose menu option OR new destination option, NOT BOTH!!"
             render :new
-        else
-            @destination = Destination.find_by_id(params[:destination][:id])
-            if @destination.nil?
+        elsif params[:destination][:name].present?
+            @tryDestination = params[:destination][:name]
+            @tryDatabase = Destination.find_by(name: params[:destination][:name])
+
+            if !@tryDatabase.nil? && @tryDestination == @tryDatabase.name
+                @destinations = current_user.destinations
+                @destination = Destination.new
+                flash[:alert] = "That destination already exists!!  Please try again!!"
+                render :new
+            else
                 @destination = Destination.create(destination_params)
                 @destination.user_id = current_user.id
 
                 if @destination.save
                     redirect_to @destination
                 else
-                    flash[:alert] = "Destination not saved correctly, please try again!!"
+                    @destinations = current_user.destinations
+                    @destination = Destination.new
+                    flash[:alert] = "Destination not properly saved!!  Please try again!!"
                     render :new
                 end
-            else  
-                redirect_to @destination
             end
+        else
+            @destination = Destination.find_by_id(params[:destination][:id])
+            redirect_to @destination
         end
     end
 
