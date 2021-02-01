@@ -1,11 +1,10 @@
 <% if note.errors.any? %>
-  <div id="error_explanation">
+  <div>
     <h2>
-      <%= pluralize(note.errors.count, "error") %>
-      prohibited you from saving:
+      <%= pluralize(note.errors.count, "error") %>:<br>
     </h2>
 
-    <ul>
+    <ul style="list-style-type: none;">
     <% note.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
