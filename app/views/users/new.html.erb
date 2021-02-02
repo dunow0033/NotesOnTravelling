@@ -1,9 +1,16 @@
 <h1>Sign Up</h1>
 
 <% if @user.errors.any? %>
-  <% @user.errors.full_messages.each do |msg| %>
-    <%= msg %>
-  <% end %>
+  <div>
+    <h2>
+      <%= pluralize(@user.errors.count, "error") %>:<br>
+    </h2>
+
+ <ul style="list-style-type: none;">
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+  </ul>
 <% end %>
 
 <%= form_for @user do |f| %>
