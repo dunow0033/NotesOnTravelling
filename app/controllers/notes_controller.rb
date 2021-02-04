@@ -18,17 +18,12 @@ class NotesController < ApplicationController
     def index
         if params[:destination_id]
             @destination = Destination.find_by(id: params[:destination_id])
-            if @destination.nil?
-                redirect_to destinations_path, alert: "Destination Not Found!!"
-            else
-                @notes = @destination.notes
-                if @notes.empty?
-                    @notes = "none"
-                end
+            @notes = @destination.notes
+            if @notes.empty?
+                @notes = "none"
             end
         else
-            @destination = Destination.find_by(id: params[:id])
-            @notes = current_user.notes
+            @notes = Note.all
         end
     end
     
@@ -42,10 +37,10 @@ class NotesController < ApplicationController
         redirect_to notes_path
     end
 
-    def show
-        @destination = Destination.find_by_id(params[:id])
-        @notes = @destination.notes.build
-    end
+    # def show
+    #     @destination = Destination.find_by_id(params[:id])
+    #     @notes = @destination.notes.build
+    # end
 
     def destroy
         Note.find(params[:id]).destroy

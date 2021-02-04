@@ -1,7 +1,7 @@
 class DestinationsController < ApplicationController
     def index
         @most_commented = Destination.all.most_notes.first
-        @destinations = Destination.all
+        @destinations = Destination.all.order(:name)
     end
     
     def new
