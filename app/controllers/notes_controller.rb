@@ -37,11 +37,6 @@ class NotesController < ApplicationController
         redirect_to notes_path
     end
 
-    # def show
-    #     @destination = Destination.find_by_id(params[:id])
-    #     @notes = @destination.notes.build
-    # end
-
     def destroy
         Note.find(params[:id]).destroy
         flash[:notice] = "Note was successfully deleted!!"
