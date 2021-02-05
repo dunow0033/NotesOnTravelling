@@ -8,6 +8,8 @@ class NotesController < ApplicationController
         @note = Note.create(note_params)
         
         if @note.save
+            destination = Destination.find_by(id: params[:note][:destination_id])
+            flash[:notice] = "Note for " + destination.name + " was successfully created!!"
             redirect_to destinations_path
         else
             @destination_id = params[:note][:destination_id]
@@ -38,8 +40,10 @@ class NotesController < ApplicationController
     end
 
     def destroy
+        note = Note.find_by(id: params[:id])
+        destination = note.destination
         Note.find(params[:id]).destroy
-        flash[:notice] = "Note was successfully deleted!!"
+        flash[:notice] = "Note for " + destination.name + " was successfully deleted!!"
         redirect_to destinations_path
     end
     
