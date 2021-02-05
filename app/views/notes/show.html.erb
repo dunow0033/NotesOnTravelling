@@ -1,9 +1,0 @@
-<h1><%= @destination.name %></h1>
-<br>
-<h3>Notes: </h3>
-<% @notes.each do |note| %>
-    <%= note.content %>
-<% end %>
-<br>
-<br>
-<%= link_to "Make New Note", new_destination_note_path(@destination) %>

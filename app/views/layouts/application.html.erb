@@ -4,6 +4,8 @@
     <title>Notes On Travelling</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <%= javascript_tag 'application', 'data-turbolinks-track': 'reload' %>
     
   </head>
 
@@ -14,7 +16,7 @@
         <%= link_to "All Destinations", destinations_path %>
         <%= link_to "Add a Destination Or Note", new_destination_path %>
         <%= link_to "All Notes", notes_path %>
-        <%= link_to 'Log Out', '/logout/', method: "delete" %>
+        <%= link_to 'Log Out', '/logout/' %>
       <% end %>
 
   <body>

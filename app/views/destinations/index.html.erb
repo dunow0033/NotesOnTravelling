@@ -1,15 +1,23 @@
 <% if @destinations.empty? %>
     <h1>No Destinations Created Yet!!  Let's Make Some!!</h1>
 <% else %>
+    <% flash.each do |type, msg| %>
+        <div>
+            <%= msg %>
+        </div>
+    <% end %>
+
     <h1>All Destinations created so far</h1>
 
     <% if !@most_commented.nil? %>
         <h2>Most commented destination: <%= @most_commented.name %> </h2>
     <% end %>
 
-    <% @destinations.each do | destination | %>
-        <li>
-            <%= link_to destination.name, destination_notes_path(destination) %>
-        </li>
-    <% end %>
+    <ul style="list-style-type: none;">
+        <% @destinations.each do | destination | %>
+            <li>
+                <%= link_to destination.name, destination_notes_path(destination) %>
+            </li><br>
+        <% end %>
+    </ul>
 <% end %>

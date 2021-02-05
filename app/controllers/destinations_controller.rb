@@ -1,22 +1,19 @@
 class DestinationsController < ApplicationController
     def index
-        @most_commented = current_user.destinations.most_notes.first
-        @destinations = current_user.destinations
+        @most_commented = Destination.all.most_notes.first
+        @destinations = Destination.all.order(:name)
     end
     
     def new
-        @destinations = current_user.destinations
         @destination = Destination.new
     end
 
     def create
         if params[:destination][:id].blank? && params[:destination][:name].blank?
-            @destinations = current_user.destinations
             @destination = Destination.new
             flash[:alert] = "Destination CANNOT be blank!!  Please try again!!"
             render :new
         elsif params[:destination][:id].present? && params[:destination][:name].present?
-            @destinations = current_user.destinations
             @destination = Destination.new
             flash[:alert] = "Please choose menu option OR new destination option, NOT BOTH!!"
             render :new
@@ -25,7 +22,6 @@ class DestinationsController < ApplicationController
             @tryDatabase = Destination.find_by(name: params[:destination][:name])
 
             if !@tryDatabase.nil? && @tryDestination == @tryDatabase.name
-                @destinations = current_user.destinations
                 @destination = Destination.new
                 flash[:alert] = "That destination already exists!!  Please try again!!"
                 render :new
@@ -36,7 +32,6 @@ class DestinationsController < ApplicationController
                 if @destination.save
                     redirect_to @destination
                 else
-                    @destinations = current_user.destinations
                     @destination = Destination.new
                     flash[:alert] = "Destination not properly saved!!  Please try again!!"
                     render :new
