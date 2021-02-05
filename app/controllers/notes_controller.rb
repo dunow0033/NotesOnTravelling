@@ -40,8 +40,7 @@ class NotesController < ApplicationController
     end
 
     def destroy
-        note = Note.find_by(id: params[:id])
-        destination = note.destination
+        destination = Note.find_by(id: params[:id]).destination
         Note.find(params[:id]).destroy
         flash[:notice] = "Note for " + destination.name + " was successfully deleted!!"
         redirect_to destinations_path
